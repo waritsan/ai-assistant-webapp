@@ -10,7 +10,7 @@ function parseResponse(raw: string) {
   // Example: file_id='assistant-GLHbcZFMQGLuzpbL2btwdX'
   const fileIdMatch = raw.match(/file_id='([^']+)'/);
   const citationRegex = /【(\d+:\d+)†source】/g;
-  text = text.replace(citationRegex, (match, p1) => {
+  text = text.replace(citationRegex, (match) => {
     if (fileIdMatch) {
       // You may need to adjust the link format to match your backend's file download/view URL
       const url = `/api/files/${fileIdMatch[1]}`;
@@ -58,8 +58,12 @@ export default function Home() {
       } else {
         setError("No response from backend.");
       }
-    } catch (err: any) {
-      setError(err.message || "Unknown error");
+    } catch (err: unknown) {
+      if (typeof err === "object" && err && "message" in err) {
+        setError((err as { message?: string }).message || "Unknown error");
+      } else {
+        setError("Unknown error");
+      }
     } finally {
       setLoading(false);
     }
