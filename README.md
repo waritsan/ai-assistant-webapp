@@ -1,3 +1,31 @@
+# Azure Static Web App: Next.js + Tailwind CSS
+
+This project is a Next.js app styled with Tailwind CSS, designed to be deployed as an Azure Static Web App. It interacts with an Azure Function backend via HTTP API calls.
+
+## Getting Started
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run locally:**
+   ```sh
+   npm run dev
+   ```
+3. **Build for production:**
+   ```sh
+   npm run build
+   ```
+
+## Interacting with Azure Function
+- The frontend sends a POST request to your Azure Function endpoint (e.g., `/api/openai-assistant`) with a prompt and displays the response.
+
+## Deployment
+- Deploy this app as an Azure Static Web App and configure the backend API route to point to your Azure Function.
+
+## Customization
+- Edit the sample page in `src/app/page.tsx` to change the UI or API logic.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
